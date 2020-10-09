@@ -2,7 +2,7 @@
     "name": "Controls",
     "maps": [
         {
-            "name": "TiltTable",
+            "name": "TableControl",
             "id": "a42f46ac-c223-4017-9842-d3b30d890378",
             "actions": [
                 {
@@ -15,9 +15,9 @@
                 },
                 {
                     "name": "Camera Control",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "5134a39f-9da2-4994-b8d0-8a223f89eeb8",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -79,37 +79,15 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Mouse",
-                    "id": "41f76a2b-52b8-4c31-842e-d9d190f0eb8c",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "918353b0-7614-4eac-b092-45376ad48983",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Camera Control",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "50152a4e-cd62-41f3-b5c2-bc8d4d36b405",
-                    "path": "<Mouse>/position/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Camera Control",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "38d24aa3-0f9e-4cf8-9c37-e1b617b7f3f5",
-                    "path": "<Mouse>/position/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Camera Control",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         }

@@ -15,7 +15,7 @@ public class @Controls : IInputActionCollection, IDisposable
     ""name"": ""Controls"",
     ""maps"": [
         {
-            ""name"": ""TiltTable"",
+            ""name"": ""TableControl"",
             ""id"": ""a42f46ac-c223-4017-9842-d3b30d890378"",
             ""actions"": [
                 {
@@ -28,9 +28,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""Camera Control"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""5134a39f-9da2-4994-b8d0-8a223f89eeb8"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -92,47 +92,25 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Mouse"",
-                    ""id"": ""41f76a2b-52b8-4c31-842e-d9d190f0eb8c"",
-                    ""path"": ""1DAxis"",
+                    ""name"": """",
+                    ""id"": ""918353b0-7614-4eac-b092-45376ad48983"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Camera Control"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""50152a4e-cd62-41f3-b5c2-bc8d4d36b405"",
-                    ""path"": ""<Mouse>/position/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Camera Control"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""38d24aa3-0f9e-4cf8-9c37-e1b617b7f3f5"",
-                    ""path"": ""<Mouse>/position/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Camera Control"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // TiltTable
-        m_TiltTable = asset.FindActionMap("TiltTable", throwIfNotFound: true);
-        m_TiltTable_TableTilt = m_TiltTable.FindAction("TableTilt", throwIfNotFound: true);
-        m_TiltTable_CameraControl = m_TiltTable.FindAction("Camera Control", throwIfNotFound: true);
+        // TableControl
+        m_TableControl = asset.FindActionMap("TableControl", throwIfNotFound: true);
+        m_TableControl_TableTilt = m_TableControl.FindAction("TableTilt", throwIfNotFound: true);
+        m_TableControl_CameraControl = m_TableControl.FindAction("Camera Control", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -179,34 +157,34 @@ public class @Controls : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // TiltTable
-    private readonly InputActionMap m_TiltTable;
-    private ITiltTableActions m_TiltTableActionsCallbackInterface;
-    private readonly InputAction m_TiltTable_TableTilt;
-    private readonly InputAction m_TiltTable_CameraControl;
-    public struct TiltTableActions
+    // TableControl
+    private readonly InputActionMap m_TableControl;
+    private ITableControlActions m_TableControlActionsCallbackInterface;
+    private readonly InputAction m_TableControl_TableTilt;
+    private readonly InputAction m_TableControl_CameraControl;
+    public struct TableControlActions
     {
         private @Controls m_Wrapper;
-        public TiltTableActions(@Controls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @TableTilt => m_Wrapper.m_TiltTable_TableTilt;
-        public InputAction @CameraControl => m_Wrapper.m_TiltTable_CameraControl;
-        public InputActionMap Get() { return m_Wrapper.m_TiltTable; }
+        public TableControlActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @TableTilt => m_Wrapper.m_TableControl_TableTilt;
+        public InputAction @CameraControl => m_Wrapper.m_TableControl_CameraControl;
+        public InputActionMap Get() { return m_Wrapper.m_TableControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(TiltTableActions set) { return set.Get(); }
-        public void SetCallbacks(ITiltTableActions instance)
+        public static implicit operator InputActionMap(TableControlActions set) { return set.Get(); }
+        public void SetCallbacks(ITableControlActions instance)
         {
-            if (m_Wrapper.m_TiltTableActionsCallbackInterface != null)
+            if (m_Wrapper.m_TableControlActionsCallbackInterface != null)
             {
-                @TableTilt.started -= m_Wrapper.m_TiltTableActionsCallbackInterface.OnTableTilt;
-                @TableTilt.performed -= m_Wrapper.m_TiltTableActionsCallbackInterface.OnTableTilt;
-                @TableTilt.canceled -= m_Wrapper.m_TiltTableActionsCallbackInterface.OnTableTilt;
-                @CameraControl.started -= m_Wrapper.m_TiltTableActionsCallbackInterface.OnCameraControl;
-                @CameraControl.performed -= m_Wrapper.m_TiltTableActionsCallbackInterface.OnCameraControl;
-                @CameraControl.canceled -= m_Wrapper.m_TiltTableActionsCallbackInterface.OnCameraControl;
+                @TableTilt.started -= m_Wrapper.m_TableControlActionsCallbackInterface.OnTableTilt;
+                @TableTilt.performed -= m_Wrapper.m_TableControlActionsCallbackInterface.OnTableTilt;
+                @TableTilt.canceled -= m_Wrapper.m_TableControlActionsCallbackInterface.OnTableTilt;
+                @CameraControl.started -= m_Wrapper.m_TableControlActionsCallbackInterface.OnCameraControl;
+                @CameraControl.performed -= m_Wrapper.m_TableControlActionsCallbackInterface.OnCameraControl;
+                @CameraControl.canceled -= m_Wrapper.m_TableControlActionsCallbackInterface.OnCameraControl;
             }
-            m_Wrapper.m_TiltTableActionsCallbackInterface = instance;
+            m_Wrapper.m_TableControlActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @TableTilt.started += instance.OnTableTilt;
@@ -218,8 +196,8 @@ public class @Controls : IInputActionCollection, IDisposable
             }
         }
     }
-    public TiltTableActions @TiltTable => new TiltTableActions(this);
-    public interface ITiltTableActions
+    public TableControlActions @TableControl => new TableControlActions(this);
+    public interface ITableControlActions
     {
         void OnTableTilt(InputAction.CallbackContext context);
         void OnCameraControl(InputAction.CallbackContext context);

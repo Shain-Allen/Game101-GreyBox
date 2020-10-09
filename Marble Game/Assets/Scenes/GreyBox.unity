@@ -466,7 +466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76d3494ed04c6f4ba370d1d578f68dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TiltSpeed: 0.5
+  cameraAnchor: {fileID: 1626152658}
+  cameraSpeed: 0.05
+  tiltSpeed: 0.3
 --- !u!114 &544390571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,9 +510,24 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9a52a8cf-a167-47b8-be58-5fc4a9649ea9
     m_ActionName: TiltTable/TableTilt[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 544390570}
+        m_MethodName: CameraMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5134a39f-9da2-4994-b8d0-8a223f89eeb8
+    m_ActionName: TiltTable/Camera Control[/Mouse/delta/x,/Mouse/delta/x,/Mouse/delta/y,/Mouse/delta/y]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: TiltTable
+  m_DefaultActionMap: TableControl
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &705507993
@@ -871,7 +888,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 5.86, z: -9.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1626152658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 27.337002, y: 0, z: 0}
 --- !u!1 &1401073284
@@ -967,3 +984,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401073284}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1626152657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626152658}
+  m_Layer: 0
+  m_Name: Camera Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1626152658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626152657}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 963194228}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
