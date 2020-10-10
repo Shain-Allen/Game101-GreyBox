@@ -12,7 +12,6 @@ public class TiltControl : MonoBehaviour
     public float tiltSpeed = 0.3f;
     Vector2 tiltDirRaw;
     Vector2 tiltDir;
-
     Vector2 camMoveRaw;
     Vector2 camMove;
 
@@ -28,7 +27,13 @@ public class TiltControl : MonoBehaviour
         transform.rotation *= Quaternion.Euler(tiltDir.y, 0, -tiltDir.x);
 
         camMove = camMoveRaw * cameraSpeed;
-        cameraAnchor.rotation = Quaternion.Euler(0 , camMove.x, 0);   
+        //float x = cameraAnchor.rotation.x;
+        //float y = cameraAnchor.rotation.y;
+        //float z = cameraAnchor.rotation.z;
+
+        //Vector3 desiredRot = new Vector3(x, y + camMove.x, z);
+
+        //cameraAnchor.rotation = Quaternion.Euler();   
     }
 
     public void TableMovement(InputAction.CallbackContext ctx)
